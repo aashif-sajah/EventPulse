@@ -9,11 +9,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class SimulationController {
 
+    private final SimulationController simulationController;
+
+    public SimulationController(SimulationController simulationController) {
+        this.simulationController = simulationController;
+    }
 
 
     @PostMapping("/start-simulation")
     public void getConfig(SystemConfig config)
     {
-
+        simulationController.getConfig(config);
     }
+
+
 }
