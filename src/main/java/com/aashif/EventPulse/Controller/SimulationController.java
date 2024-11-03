@@ -1,7 +1,9 @@
 package com.aashif.EventPulse.Controller;
 
 import com.aashif.EventPulse.Config.SystemConfig;
+import com.aashif.EventPulse.service.SimulationService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,17 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class SimulationController {
 
-    private final SimulationController simulationController;
+    private final SimulationService  simulationService;
 
-    public SimulationController(SimulationController simulationController) {
-        this.simulationController = simulationController;
+    public SimulationController(SimulationService simulationService) {
+        this.simulationService = simulationService;
     }
 
 
     @PostMapping("/start-simulation")
-    public void getConfig(SystemConfig config)
+    public void getConfig(@RequestBody SystemConfig config)
     {
-        simulationController.getConfig(config);
+        simulationService.getConfig(config);
     }
 
 

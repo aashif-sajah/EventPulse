@@ -12,7 +12,7 @@ import lombok.ToString;
 public class SystemConfig {
     private int totalTicket;
     private int ticketReleaseRate;
-    private int consumerRetrevalRate;
+    private int consumerRetreivalRate;
     private int ticketPoolCapacity;
 
 }
