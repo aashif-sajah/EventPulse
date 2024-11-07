@@ -4,16 +4,16 @@ import com.aashif.EventPulse.model.Ticket;
 import com.aashif.EventPulse.repository.TicketRepo;
 import com.aashif.EventPulse.util.LoggerUtil;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
+
 @AllArgsConstructor
 public class Producer implements Runnable{
     private final TicketPool  ticketPool;
     private final LoggerUtil logger;
     private final TicketRepo ticketRepo;
-    private final Integer producerId;
-    private final Integer ticketReleaseRate;
+    private final int producerId;
+    private final int ticketReleaseRate;
+
 
     @Override
     public void run()
@@ -37,7 +37,8 @@ public class Producer implements Runnable{
             }
         } catch (InterruptedException e)
         {
-            throw new RuntimeException(e);
+            Thread.currentThread().interrupt();
+            System.out.println("Producer Thread is interrupted:" + e.getMessage());
         }
     }
 }
