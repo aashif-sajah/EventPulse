@@ -14,4 +14,7 @@ public class SimulationService {
 
     public void getConfig(SystemConfig config) {
     }
+
+    public void stopSimulation() {
+    }
 }
