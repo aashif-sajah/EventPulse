@@ -23,10 +23,9 @@ public class LoggerUtil {
         logEntryRepo.save(new LogEntry(message));
         System.out.println("message: " + message);
         
-        // make this return method to return the message so that
-        // contorller can create a serive obj and one it start the simulation
-        // this will return the message
-        
+        // Make this return method to return the message so that
+        // Controller can create a service obj and one it start the simulation
+        // This will return the message
     }
 
 

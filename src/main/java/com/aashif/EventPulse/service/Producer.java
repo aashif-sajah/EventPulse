@@ -22,7 +22,7 @@ public class Producer implements Runnable{
         {
             while (true)
             {
-                if(ticketPool.getCurrentTicketsInthePool()<ticketPool.getTicketPoolCapacity())
+                if(ticketPool.getCurrentTicketsInThePool()<ticketPool.getTicketPoolCapacity())
                 {
                     Ticket ticket = new Ticket();
                     ticketPool.produceTicket(ticket);

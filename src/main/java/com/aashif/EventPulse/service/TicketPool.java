@@ -2,10 +2,11 @@ package com.aashif.EventPulse.service;
 
 
 import com.aashif.EventPulse.model.Ticket;
-import org.springframework.stereotype.Component;
+
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class TicketPool
@@ -13,27 +14,39 @@ public class TicketPool
     private final int ticketPoolCapacity;
     private final BlockingQueue<Ticket> ticketPool;
 
+    private final AtomicInteger producedTicketCount = new AtomicInteger(0);
+    private final AtomicInteger consumedTicketCount = new AtomicInteger(0);
+
+
     public TicketPool(int ticketPoolCapacity) {
         this.ticketPoolCapacity = ticketPoolCapacity;
         this.ticketPool = new ArrayBlockingQueue<>(ticketPoolCapacity);
     }
 
-    public boolean produceTicket(Ticket ticket)
+    // A method to Add Ticket to Ticket Pool
+    public synchronized void produceTicket(Ticket ticket)
     {
-        return ticketPool.offer(ticket);
+        ticketPool.add(ticket);
+        producedTicketCount.incrementAndGet();
     }
 
-    public Ticket consumeTicket()
+    // A method to Remove ticket From the Ticket Pool
+    public synchronized Ticket consumeTicket()
     {
+        consumedTicketCount.incrementAndGet();
         return ticketPool.poll();
     }
 
-    public int getCurrentTicketsInthePool()
+    public synchronized int getCurrentTicketsInThePool()
     {
         return ticketPool.size();
     }
 
-    public int getTicketPoolCapacity() {
+    public synchronized int getTicketPoolCapacity() {
         return ticketPoolCapacity;
     }
+
+    public synchronized int getProducedTicketCount(){return producedTicketCount.get();}
+
+    public synchronized int getConsumedTicketCount(){return consumedTicketCount.get();}
 }

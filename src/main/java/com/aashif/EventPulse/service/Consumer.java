@@ -1,8 +1,6 @@
 package com.aashif.EventPulse.service;
 
-
 import com.aashif.EventPulse.model.Ticket;
-import com.aashif.EventPulse.repository.TicketRepo;
 import com.aashif.EventPulse.util.LoggerUtil;
 import lombok.AllArgsConstructor;
 
@@ -17,7 +15,6 @@ public class Consumer implements Runnable
     @Override
     public void run()
     {
-
         while(true) try
         {
             Ticket ticket = ticketPool.consumeTicket();
