@@ -18,7 +18,6 @@ public class Producer implements Runnable{
     private final int totalTicket;
 
 
-
     @Override
     public void run()
     {
