@@ -1,6 +1,7 @@
 package com.aashif.EventPulse.service;
 
 import com.aashif.EventPulse.model.Ticket;
+import com.aashif.EventPulse.model.Ticket;
 import com.aashif.EventPulse.util.LoggerUtil;
 import lombok.AllArgsConstructor;
 

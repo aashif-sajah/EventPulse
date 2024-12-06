@@ -16,41 +16,34 @@ public class Producer implements Runnable{
     private final int producerId;
     private final AtomicBoolean stopFlag;
     private final int totalTicket;
-    private final int ticketReleaseRate;
+
 
 
     @Override
     public void run()
     {
-        while(!stopFlag.get() && ticketPool.getProducedTicketCount() < totalTicket )
+        if (stopFlag.get())
         {
-            try
-            {
-                if(ticketPool.getCurrentTicketsInThePool() < ticketPool.getTicketPoolCapacity())
-                {
-                    Ticket ticket = new Ticket();
-                    ticketPool.produceTicket(ticket);
-                    ticketRepo.save(ticket);
-                    logger.log("Producer with ID: " + producerId + " has been produced a ticket with ID: " + ticket.getId());
-                } else {
-                    logger.log("Producer with ID: " + producerId + " is waiting because Pool is Full");
-                }
-                Thread.sleep(ticketReleaseRate*1000L);
-            }catch(InterruptedException e)
-            {
-                logger.log("Producer with ID: " + producerId + " is stopping due to interrupted");
-                Thread.currentThread().interrupt();
-                break;
-            }
+            logger.log("Producer with ID: " + producerId + " stopping due to User Stopped the Simulation");
+        } else if (ticketPool.getProducedTicketCount() >= totalTicket)
+        {
+            logger.log("Producer with ID: " + producerId + " stopping As All tickets are produced.");
+        }
 
-            if(stopFlag.get())
-            {
-                logger.log("Producer with ID: " + producerId + " has been stopped");
-            } else if (ticketPool.getProducedTicketCount() >= totalTicket)
-            {
-                logger.log("Producer with ID: " + producerId + " has been produced all the tickets");
-            }
+        if(Thread.currentThread().isInterrupted())
+        {
+            logger.log("Producer with ID: " + producerId + " stopping due to Interrupted.");
+            return; // if thread interrupted then leaving out of the run method
+        }
 
+        if(ticketPool.getCurrentTicketsInThePool() < ticketPool.getTicketPoolCapacity())
+        {
+            Ticket ticket = new Ticket();
+            ticketPool.produceTicket(ticket);
+            ticketRepo.save(ticket);
+            logger.log("Producer with ID: " + producerId + " has been produced a ticket with ID: " + ticket.getId());
+        } else {
+            logger.log("Producer with ID: " + producerId + " is waiting because Pool is Full");
         }
 
     }

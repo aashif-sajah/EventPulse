@@ -18,7 +18,7 @@ public class SimulationController {
     @GetMapping("/")
     public String home()
     {
-        return "Hello Nigga!";
+        return "Hello ling ling!";
     }
 
     @GetMapping("/getConfig")

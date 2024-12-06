@@ -3,7 +3,6 @@ package com.aashif.EventPulse.service;
 
 import com.aashif.EventPulse.model.Ticket;
 
-
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
