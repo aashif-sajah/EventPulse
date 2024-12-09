@@ -1,1 +1,79 @@
-<p>initial-config works!</p>
+<div class="container">
+  <div class="header">
+    <h1>EVENT PULSE</h1>
+  </div>
+  <div class="content">
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <h1 class="welcome-text">Welcome to Event Pulse</h1>
+      <p class="sub-text">
+        Mata ba mata ba daddy. Mata bala karoth mn marenawa. Apparata bola.
+      </p>
+      <img src="../../test.png" alt="Tickets" class="ticket-img" />
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <h3 class="form-title">Fill into ling ling</h3>
+      <form class="main-form">
+
+        <div class="form-group">
+          <label for="totalTicket">Total tickets</label>
+          <input
+            id="totalTicket"
+            type="number"
+            placeholder="Enter the total tickets"
+            [(ngModel)]="config.totalTicket"
+            name="totalTicket"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="ticketReleaseRate">Ticket release rate</label>
+          <input
+            id="ticketReleaseRate"
+            type="number"
+            placeholder="Enter the release rate"
+            [(ngModel)]="config.ticketReleaseRate"
+            required
+            name="ticketReleaseRate" />
+        </div>
+
+        <div class="form-group">
+          <label for="consumerRetrievalRate">Ticket retrieval rate</label>
+          <input
+            id="consumerRetrievalRate"
+            type="number"
+            placeholder="Enter the retrieval rate"
+            [(ngModel)]="config.consumerRetrievalRate"
+            required
+            name="consumerRetrievalRate" />
+        </div>
+        <div class="form-group">
+          <label for="ticketPoolCapacity">Ticket pool</label>
+          <input
+            id="ticketPoolCapacity"
+            type="number"
+            placeholder="Enter the ticket pool"
+            [(ngModel)]="config.ticketPoolCapacity"
+            required
+            name="ticketPoolCapacity"
+             />
+        </div>
+        <div class="button-group">
+          <button type="submit" class="btn start" (click)="startSimulation()">
+            Start
+          </button>
+          <button type="reset" class="btn reset">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <footer class="footer">
+    <p>© 2022 Event Pulse. All rights reserved.</p>
+    <p>Object Oriented Programming CW</p>
+    <p>20222329/w2052938</p>
+  </footer>
+</div>
+

@@ -1,12 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-
-
-@NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
-})
-export class SystemConfigModule { }
+export interface SystemConfig {
+  ticketPoolCapacity: number;
+  ticketReleaseRate: number;
+  consumerRetrievalRate: number;
+  totalTicket: number;
+}

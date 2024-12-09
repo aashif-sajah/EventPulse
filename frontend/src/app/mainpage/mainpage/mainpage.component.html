@@ -1,1 +1,67 @@
-<p>mainpage works!</p>
+<div class="container">
+  <!-- Header -->
+  <header>
+    <h1>Ticket Simulation Dashboard</h1>
+    <p>Monitor the simulation in real-time and manage its progress.</p>
+  </header>
+
+  <!-- Simulation Start Time -->
+  <section class="start-time">
+    <h2>Simulation Start Time</h2>
+    <p id="startTime">Not started yet</p>
+  </section>
+
+  <!-- User Configurations -->
+  <section class="configurations">
+    <h2>User Configurations</h2>
+    <div class="config-item">
+      <span>Number of Producers:</span>
+      <span id="numProducers">-</span>
+    </div>
+    <div class="config-item">
+      <span>Number of Consumers:</span>
+      <span id="numConsumers">-</span>
+    </div>
+    <div class="config-item">
+      <span>Ticket Pool Size:</span>
+      <span id="poolSize">-</span>
+    </div>
+    <div class="config-item">
+      <span>Target Tickets:</span>
+      <span id="targetTickets">-</span>
+    </div>
+  </section>
+
+  <!-- Statistics Section -->
+  <section class="stats">
+    <h2>Current Statistics</h2>
+    <div class="stat-item">
+      <span>Tickets in Pool:</span>
+      <span id="currentPool">0</span>
+    </div>
+    <div class="stat-item">
+      <span>Total Tickets Produced:</span>
+      <span id="totalProduced">0</span>
+    </div>
+    <div class="stat-item">
+      <span>Total Tickets Consumed:</span>
+      <span id="totalConsumed">0</span>
+    </div>
+    <div class="stat-item">
+      <span>Remaining Tickets:</span>
+      <span id="remainingTickets">0</span>
+    </div>
+  </section>
+
+  <!-- Real-Time Logs Section -->
+  <section class="logs">
+    <h2>Real-Time Logs</h2>
+    <div id="logContainer"></div>
+  </section>
+
+  <!-- Control Panel -->
+  <section class="controls">
+    <h2>Control Panel</h2>
+    <button id="stopSimulation" (click)="onBtnClick()">Stop Simulation</button>
+  </section>
+</div>
