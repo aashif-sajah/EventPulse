@@ -1,67 +1,44 @@
 <div class="container">
-  <!-- Header -->
-  <header>
-    <h1>Ticket Simulation Dashboard</h1>
-    <p>Monitor the simulation in real-time and manage its progress.</p>
-  </header>
+  <div class="header">
+    <h1>EVENT PULSE</h1>
+  </div>
+  <div class="content">
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <h1>Dashboard</h1>
+      <p>Monitor the simulation in real-time and manage its progress.</p>
+      <div class="info-group">
+        <h3>Simulation start time</h3>
+        <input type="text" placeholder="Simulation start time" />
+      </div>
+      <div class="info-group">
+        <h3>User configurations</h3>
+        <p>Number of Producers: --</p>
+        <p>Number of Consumers: --</p>
+        <p>Ticket Pool Size: --</p>
+        <p>Target Tickets: --</p>
+      </div>
+      <div class="info-group">
+        <h3>Current statistics</h3>
+        <p>Tickets in Pool: --</p>
+        <p>Total Tickets Produced: --</p>
+        <p>Total Tickets Consumed: --</p>
+        <p>Remaining Tickets: --</p>
+      </div>
+    </div>
 
-  <!-- Simulation Start Time -->
-  <section class="start-time">
-    <h2>Simulation Start Time</h2>
-    <p id="startTime">Not started yet</p>
-  </section>
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <h3>Real-time Logs</h3>
+      <div class="logArea">
 
-  <!-- User Configurations -->
-  <section class="configurations">
-    <h2>User Configurations</h2>
-    <div class="config-item">
-      <span>Number of Producers:</span>
-      <span id="numProducers">-</span>
+      </div>
+      <button class="btn stop">Stop Simulation</button>
     </div>
-    <div class="config-item">
-      <span>Number of Consumers:</span>
-      <span id="numConsumers">-</span>
-    </div>
-    <div class="config-item">
-      <span>Ticket Pool Size:</span>
-      <span id="poolSize">-</span>
-    </div>
-    <div class="config-item">
-      <span>Target Tickets:</span>
-      <span id="targetTickets">-</span>
-    </div>
-  </section>
-
-  <!-- Statistics Section -->
-  <section class="stats">
-    <h2>Current Statistics</h2>
-    <div class="stat-item">
-      <span>Tickets in Pool:</span>
-      <span id="currentPool">0</span>
-    </div>
-    <div class="stat-item">
-      <span>Total Tickets Produced:</span>
-      <span id="totalProduced">0</span>
-    </div>
-    <div class="stat-item">
-      <span>Total Tickets Consumed:</span>
-      <span id="totalConsumed">0</span>
-    </div>
-    <div class="stat-item">
-      <span>Remaining Tickets:</span>
-      <span id="remainingTickets">0</span>
-    </div>
-  </section>
-
-  <!-- Real-Time Logs Section -->
-  <section class="logs">
-    <h2>Real-Time Logs</h2>
-    <div id="logContainer"></div>
-  </section>
-
-  <!-- Control Panel -->
-  <section class="controls">
-    <h2>Control Panel</h2>
-    <button id="stopSimulation" (click)="onBtnClick()">Stop Simulation</button>
-  </section>
+  </div>
+  <footer class="footer">
+    <p>© 2022 Event Pulse. All rights reserved.</p>
+    <p>Object Oriented Programming CW</p>
+    <p>20222329/w2052938</p>
+  </footer>
 </div>

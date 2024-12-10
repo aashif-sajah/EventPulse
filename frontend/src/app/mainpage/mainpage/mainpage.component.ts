@@ -9,7 +9,7 @@ import { SimulationService } from '../../services/simulation.service';
   standalone: true,
   imports: [],
   templateUrl: './mainpage.component.html',
-  styleUrl: './mainpage.component.css'
+  styleUrl: './mainpage.component.css',
 })
 export class MainpageComponent {
   config!: SystemConfig;
@@ -29,7 +29,7 @@ export class MainpageComponent {
 
   startSimulation(): void {
     this.simulationService.startSimulation(this.config).subscribe(() => {
-      console.log("message");
+      console.log('message');
       this.fetchLogs();
     });
   }
@@ -42,11 +42,11 @@ export class MainpageComponent {
     }, 2000);
   }
 
-  stopSimulation():void{
+  stopSimulation(): void {
     alert('Simulation stopped');
     this.router.navigate(['/']);
     this.simulationService.stopSimulation().subscribe(() => {
-      /* alert('Simulation stopped'); */
-      /* this.router.navigate(['/']); */
+      console.log('Simulation stopped');
     });
+  }
 }
