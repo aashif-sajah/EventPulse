@@ -36,7 +36,7 @@ public class Consumer implements Runnable
         Ticket ticket = ticketPool.consumeTicket();
         if (ticket != null)
         {
-            logger.log("Consumer with ID: "+ consumerId + "Consumed Ticket: " + ticket.getId());
+            logger.log("Consumer with ID: "+ consumerId + " Consumed Ticket: " + ticket.getId());
         } else
         {
             logger.log("Consumer with ID: "+ consumerId + " Ain't consumed Ticket cz Pool is Null");

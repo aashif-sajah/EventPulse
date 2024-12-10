@@ -12,12 +12,12 @@ import java.util.List;
 
 @Component
 @AllArgsConstructor
-@Getter
+
 public class LoggerUtil {
 
-    LogEntryRepo logEntryRepo;
+    private LogEntryRepo logEntryRepo;
 
-
+    @Getter
     private List<String> logs = new ArrayList<>();
 
     @Autowired
@@ -29,11 +29,10 @@ public class LoggerUtil {
     {
         logs.add(message);
         logEntryRepo.save(new LogEntry(message));
-        System.out.println("message: " + message);
-        
-        // Make this return method to return the message so that
-        // Controller can create a service obj and one it start the simulation
-        // This will return the message
+        System.out.println("Log: " + message);
+
     }
+
+
 
 }

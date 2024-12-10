@@ -76,12 +76,13 @@
 
 .right-panel .logArea {
   width: 100%;
-  height: 200px;
+  height: 250px;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-sizing: border-box;
   background-color: #b99b9b;
+  overflow-y: auto;
 }
 
 .btn.stop {

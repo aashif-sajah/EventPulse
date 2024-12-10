@@ -13,10 +13,10 @@
       </div>
       <div class="info-group">
         <h3>User configurations</h3>
-        <p>Target Tickets: {{config.totalTicket}} </p>
-        <p>Ticket Release Rate: {{config.ticketReleaseRate}} </p>
-        <p>Ticket Retrieval Rate {{config.consumerRetrievalRate}}</p>
-        <p>Ticket Pool Capacity: {{config.ticketPoolCapacity}}</p>
+        <p>Target Tickets: {{ config != null ? config.totalTicket : "Not Initialized yet"}}</p>
+        <p>Ticket Release Rate: {{ config != null ? config.ticketReleaseRate : "Not Initialized yet"}}</p>
+        <p>Ticket Retrieval Rate {{ config != null ? config.consumerRetrievalRate : "Not Initialized yet"}}</p>
+        <p>Ticket Pool Capacity: {{ config  != null ? config.ticketPoolCapacity : "Not Initialized yet"}}</p>
       </div>
       <div class="info-group">
         <h3>Current statistics</h3>
@@ -31,9 +31,13 @@
     <div class="right-panel">
       <h3>Real-time Logs</h3>
       <div class="logArea">
-
+        @for(log of logs; track log){
+        <p>{{ log }}</p>
+        }
       </div>
-      <button class="btn stop" (click)="stopSimulation()" >Stop Simulation</button>
+      <button class="btn stop" (click)="stopSimulation()">
+        Stop Simulation
+      </button>
     </div>
   </div>
   <footer class="footer">

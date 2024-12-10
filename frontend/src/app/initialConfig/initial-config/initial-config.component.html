@@ -15,7 +15,7 @@
     <!-- Right Panel -->
     <div class="right-panel">
       <h3 class="form-title">Fill into ling ling</h3>
-      <form class="main-form">
+      <form class="main-form" (ngSubmit)="startSimulation()">
 
         <div class="form-group">
           <label for="totalTicket">Total tickets</label>
@@ -62,7 +62,7 @@
              />
         </div>
         <div class="button-group">
-          <button type="submit" class="btn start" (click)="startSimulation()">
+          <button type="submit" class="btn start" >
             Start
           </button>
           <button type="reset" class="btn reset">Reset</button>

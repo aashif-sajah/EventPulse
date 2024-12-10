@@ -51,7 +51,7 @@ public class SimulationService
         for(int i = 0; i < CONSUMER_THREADS; i++)
         {
             int consumerId = i+1;
-            int initialDelay = i * systemConfig.getConsumerRetreivalRate();
+            int initialDelay = i * systemConfig.getConsumerRetrievalRate();
             executor.scheduleAtFixedRate(
                     new Consumer(
                             ticketPool,
@@ -60,7 +60,7 @@ public class SimulationService
                             stopFlag,
                             systemConfig.getTotalTicket()),
                     initialDelay,
-                    systemConfig.getConsumerRetreivalRate(),
+                    systemConfig.getConsumerRetrievalRate(),
                     TimeUnit.SECONDS
             );
         }
@@ -68,7 +68,7 @@ public class SimulationService
         for(int i = 0; i < PRODUCER_THREADS; i++)
         {
             int producerId = i+1;
-            int initialDelay = i * systemConfig.getConsumerRetreivalRate();
+            int initialDelay = i * systemConfig.getConsumerRetrievalRate();
             executor.scheduleAtFixedRate(
                     new Producer(
                             ticketPool,

@@ -14,6 +14,6 @@ import org.springframework.stereotype.Component;
 public class SystemConfig {
     private int totalTicket;
     private int ticketReleaseRate;
-    private int consumerRetreivalRate;
+    private int consumerRetrievalRate;
     private int ticketPoolCapacity;
 }
