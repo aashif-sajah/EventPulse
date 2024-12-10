@@ -13,10 +13,10 @@
       </div>
       <div class="info-group">
         <h3>User configurations</h3>
-        <p>Number of Producers: --</p>
-        <p>Number of Consumers: --</p>
-        <p>Ticket Pool Size: --</p>
-        <p>Target Tickets: --</p>
+        <p>Target Tickets: {{config.totalTicket}} </p>
+        <p>Ticket Release Rate: {{config.ticketReleaseRate}} </p>
+        <p>Ticket Retrieval Rate {{config.consumerRetrievalRate}}</p>
+        <p>Ticket Pool Capacity: {{config.ticketPoolCapacity}}</p>
       </div>
       <div class="info-group">
         <h3>Current statistics</h3>
@@ -33,11 +33,11 @@
       <div class="logArea">
 
       </div>
-      <button class="btn stop">Stop Simulation</button>
+      <button class="btn stop" (click)="stopSimulation()" >Stop Simulation</button>
     </div>
   </div>
   <footer class="footer">
-    <p>© 2022 Event Pulse. All rights reserved.</p>
+    <p>© 2024 Event Pulse. All rights reserved.</p>
     <p>Object Oriented Programming CW</p>
     <p>20222329/w2052938</p>
   </footer>
