@@ -10,7 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 
 @RestController
@@ -41,20 +43,27 @@ public class SimulationController {
 
 
     @PostMapping("/start-simulation")
-    public void startSimulation(@RequestBody SystemConfig config)
-    {
+    public ResponseEntity<Map<String, String>> startSimulation(@RequestBody SystemConfig config) {
         System.out.println(config.toString());
         simulationService.startSimulation(config);
+
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Simulation started successfully");
+        return ResponseEntity.ok(response);
     }
 
+
     @PostMapping("/stop-simulation")
-    public ResponseEntity<String> stopSimulation() {
+    public ResponseEntity<Map<String, String>> stopSimulation() {
         try {
             simulationService.stopSimulation(simulationService.getSimulationId());
-            return ResponseEntity.ok("Simulation stopped successfully");
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Simulation stopped successfully");
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error stopping simulation: " + e.getMessage());
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Error stopping simulation: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
         }
     }
 
@@ -79,7 +88,7 @@ public class SimulationController {
                 response.getWriter().write("data: { \"type\": \"error\", \"message\": \"TicketPool not initialized.\" }\n\n");
                 response.getWriter().flush();
             } catch (IOException e) {
-                e.printStackTrace();
+                loggerUtil.log(e.getMessage(), simulationService.getSimulationId());
             }
             return;
         }
@@ -101,14 +110,22 @@ public class SimulationController {
                 response.getWriter().flush();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            loggerUtil.log(e.getMessage(), simulationService.getSimulationId());
         } finally {
             try {
                 response.getWriter().close();  // Ensure that the writer is closed when done
             } catch (IOException e) {
-                e.printStackTrace();
+                loggerUtil.log(e.getMessage(), simulationService.getSimulationId());
             }
         }
     }
+
+    @GetMapping("/simulation-ids")
+    public List<Long> getSimulationIds() {
+        return simulationService.getAllSimulationIds();
+    }
+
+
+
 }
 

@@ -26,6 +26,7 @@ export class SimulationService {
   getLogStream(): Observable<any> {
     return new Observable((observer) => {
       const eventSource = new EventSource(`${this.baseUrl}/stream-logs`);
+      
 
       eventSource.onmessage = (event) => {
         this.zone.run(() => {
@@ -41,5 +42,15 @@ export class SimulationService {
 
       return () => eventSource.close();
     });
+  }
+
+   // Fetch all simulation IDs from the backend
+  getSimulationIds(): Observable<number[]> {
+    return this.httpClient.get<number[]>(`${this.baseUrl}/simulation-ids`);
+  }
+
+  // Fetch logs by simulation ID
+  getLogsBySimulationId(simulationId: number): Observable<any[]> {
+    return this.httpClient.get<any[]>(`${this.baseUrl}/logs/${simulationId}`);
   }
 }

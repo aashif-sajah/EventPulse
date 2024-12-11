@@ -27,7 +27,7 @@ public class LoggerUtil {
     {
         logQueue.offer(message);
         logEntryRepo.save(new LogEntry(message, simulationId));
-        /*System.out.println("Log: " + message);*/
+        System.out.println("Log: " + message);
 
     }
 

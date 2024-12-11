@@ -9,21 +9,61 @@
       <p>Monitor the simulation in real-time and manage its progress.</p>
       <div class="info-group">
         <h3>Simulation start time</h3>
-        <input type="text" placeholder="Simulation start time" />
+        <p>{{ startTime | date: 'HH:mm:ss' }}</p>
       </div>
       <div class="info-group">
         <h3>User configurations</h3>
-        <p>Target Tickets: {{ config != null ? config.totalTicket : "Not Initialized yet"}}</p>
-        <p>Ticket Release Rate: {{ config != null ? config.ticketReleaseRate : "Not Initialized yet"}}</p>
-        <p>Ticket Retrieval Rate {{ config != null ? config.consumerRetrievalRate : "Not Initialized yet"}}</p>
-        <p>Ticket Pool Capacity: {{ config  != null ? config.ticketPoolCapacity : "Not Initialized yet"}}</p>
+        <div class="alignment">
+          <p>Target Tickets:</p>
+          <p>
+            {{ config != null ? config.totalTicket : "Not Initialized yet" }}
+          </p>
+        </div>
+        <div class="alignment">
+          <p>Ticket Release Rate:</p>
+          <p>
+            {{
+              config != null ? config.ticketReleaseRate : "Not Initialized yet"
+            }}
+          </p>
+        </div>
+        <div class="alignment">
+          <p>Ticket Retrieval Rate</p>
+          <p>
+            {{
+              config != null
+                ? config.consumerRetrievalRate
+                : "Not Initialized yet"
+            }}
+          </p>
+        </div>
+        <div class="alignment">
+          <p>Ticket Pool Capacity:</p>
+          <p>
+            {{
+              config != null ? config.ticketPoolCapacity : "Not Initialized yet"
+            }}
+          </p>
+        </div>
       </div>
       <div class="info-group">
         <h3>Current statistics</h3>
-        <p>Tickets in Pool: {{currentTickets}}</p>
-        <p>Total Tickets Produced: {{ticketsProduced}}</p>
-        <p>Total Tickets Consumed: {{ticketsConsumed}}</p>
-        <p>Remaining Tickets: {{config.totalTicket - ticketsProduced}}</p>
+        <div class="alignment">
+          <p>Tickets in Pool:</p>
+          <p>{{ currentTickets }}</p>
+        </div>
+        <div class="alignment">
+          <p>Total Tickets Produced:</p>
+          <p>{{ ticketsProduced }}</p>
+        </div>
+        <div class="alignment">
+          <p>Total Tickets Consumed:</p>
+          <p>{{ ticketsConsumed }}</p>
+        </div>
+        <div class="alignment">
+          <p>Remaining Tickets:</p>
+          <p>{{ config != null ? config.totalTicket - ticketsProduced : 0 }}</p>
+        </div>
       </div>
     </div>
 
@@ -38,6 +78,10 @@
       <button class="btn stop" (click)="stopSimulation()">
         Stop Simulation
       </button>
+      <div class="btnRap">
+        <button class="reset" (click)="restartSimulation()">Restart Simulation</button>
+        <button class="reset" (click)="checkLogs()">Check Logs</button>
+      </div>  
     </div>
   </div>
   <footer class="footer">

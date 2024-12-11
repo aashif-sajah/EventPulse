@@ -4,11 +4,12 @@ import { SystemConfig } from '../../models/system-config/system-config.module';
 import { DataSharingService } from '../../services/data-sharing.service';
 import { SimulationService } from '../../services/simulation.service';
 import { Subscription } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-mainpage',
   standalone: true,
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './mainpage.component.html',
   styleUrl: './mainpage.component.css',
 })
@@ -18,6 +19,7 @@ export class MainpageComponent {
   ticketsProduced = 0;
   ticketsConsumed = 0;
   currentTickets = 0;
+  startTime!: Date;
 
   private logStreamSubscription!: Subscription;
 
@@ -51,6 +53,7 @@ export class MainpageComponent {
         this.currentTickets = data.currentTicketsInPool | 0;
       }
     });
+    this.startTime = new Date();
   }
 
   fetchLogs(): void {
@@ -66,9 +69,16 @@ export class MainpageComponent {
       this.logStreamSubscription.unsubscribe();
     }
     alert('Simulation stopped');
-    this.router.navigate(['/']);
     this.simulationService.stopSimulation().subscribe(() => {
       console.log('Simulation stopped');
     });
+  }
+
+  restartSimulation(): void {
+    this.router.navigate(['/']);
+  }
+
+  checkLogs(): void {
+    this.router.navigate(['/showLogs']);
   }
 }

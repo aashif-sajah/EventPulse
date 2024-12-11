@@ -43,7 +43,7 @@ public class SimulationService
     }
 
 
-    public String startSimulation(SystemConfig systemConfig)
+    public void startSimulation(SystemConfig systemConfig)
     {
         System.out.println("Start simulation gets called");
         simulationId = System.currentTimeMillis();
@@ -59,7 +59,7 @@ public class SimulationService
         executor = new ScheduledThreadPoolExecutor(CONSUMER_THREADS + PRODUCER_THREADS + 1);
         executeSimulation(systemConfig, simulationId);
 
-        return "Simulation started";
+        /*return "Simulation started";*/
     }
 
     private void executeSimulation(SystemConfig systemConfig, long simulationId)
@@ -120,7 +120,7 @@ public class SimulationService
         }
     }
 
-    public String stopSimulation(long simulationId)
+    public void stopSimulation(long simulationId)
     {
         stopFlag.set(true);
         if(executor!=null){
@@ -137,7 +137,7 @@ public class SimulationService
             }
 
         } catch (InterruptedException e) {
-            return "Error While shutting down executor"+e.getMessage();
+             loggerUtil.log("Error While shutting down executor"+e.getMessage(),simulationId);
         }
 
 
@@ -145,7 +145,7 @@ public class SimulationService
         stopFlag.set(false);
         loggerUtil.getLogQueue().clear();
         loggerUtil.log("Simulation stopped successfully.",simulationId);
-        return "Simulation stopped Successfully";
+        /*return "Simulation stopped Successfully";*/
     }
 
     public List<LogEntry> getLogsBySimulationId(Long simulationId) {
@@ -164,5 +164,9 @@ public class SimulationService
             }
         }
         return ticketPool != null;
+    }
+
+    public List<Long> getAllSimulationIds() {
+        return logEntryRepo.findDistinctSimulationIds();
     }
 }

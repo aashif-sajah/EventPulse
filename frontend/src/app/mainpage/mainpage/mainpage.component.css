@@ -20,21 +20,23 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 32px 42px 8px 42px;
-  gap: 92px;
+  padding: 32px 62px 22px 42px;
+  gap: 52px;
 }
 
 /* Left Panel */
 .left-panel {
+
   width: 40%;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 
 .left-panel h1 {
   font-size: 36px;
   margin-bottom: 0px;
+  font-weight: bolder;
 }
 
 .left-panel p {
@@ -43,10 +45,15 @@
 }
 
 .info-group {
-  background-color: #eef3fa;
+  background-color: #E8F2F4;
   padding: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.alignment{
+  display: flex;
+  justify-content: space-between;
 }
 
 .info-group h3 {
@@ -60,7 +67,7 @@
 
 /* Right Panel */
 .right-panel {
-  width: 35%;
+  width: 45%;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -68,7 +75,10 @@
   padding: 24px;
   border-radius: 8px;
   border: 2px solid #3a4150;
+  margin-top: 30px;
 }
+
+
 
 .right-panel h3 {
   font-size: 24px;
@@ -96,6 +106,27 @@
   text-align: center;
 }
 
+.btnRap{
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+.reset{
+  background-color: #f44336;
+  border-radius: 8px;
+  border: none;
+  padding: 10px 40px;
+  
+  
+}
+
+
 /* Footer */
 .footer {
   background-color: #1e2d48;
@@ -105,6 +136,6 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: 13px;
-  margin-top: 16px;
+  margin-top:0px;
   overflow: hidden;
 }

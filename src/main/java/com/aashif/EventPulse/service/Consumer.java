@@ -40,7 +40,7 @@ public class Consumer implements Runnable
             logger.log("Consumer with ID: "+ consumerId + " Consumed Ticket: " + ticket.getId(),simulationId);
         } else
         {
-            logger.log("Consumer with ID: "+ consumerId + " Ain't consumed Ticket cz Pool is Null",simulationId);
+            logger.log("Consumer with ID: "+ consumerId + " waiting to consume Ticket because ticket Pool is empty",simulationId);
         }
 
     }

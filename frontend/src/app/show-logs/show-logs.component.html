@@ -1,0 +1,44 @@
+<div class="simulation-logs">
+  <h2>Simulation Logs</h2>
+
+  <!-- Button to fetch all simulation IDs -->
+  <button (click)="fetchSimulationIds()">Show Simulation IDs</button>
+
+  <!-- Display simulation IDs -->
+  <div *ngIf="simulationIds.length > 0">
+    <h3>Select a Simulation</h3>
+    <ul>
+      <li
+        *ngFor="let id of simulationIds; let i = index"
+        (click)="fetchLogsForSimulation(id); currentIndex = i"
+        [class.selected]="id === selectedSimulationId"
+      >
+        Simulation ID: {{ id }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Display navigation buttons -->
+  <div *ngIf="simulationIds.length > 1">
+    <button (click)="showPreviousSimulation()" [disabled]="currentIndex === 0">
+      Previous
+    </button>
+    <button
+      (click)="showNextSimulation()"
+      [disabled]="currentIndex === simulationIds.length - 1"
+    >
+      Next
+    </button>
+  </div>
+
+  <!-- Display logs for the selected simulation ID -->
+  <div *ngIf="logs.length > 0">
+    <h3>Logs for Simulation ID: {{ selectedSimulationId }}</h3>
+    <ul>
+      <li *ngFor="let log of logs">
+        {{ log.message }}
+      </li>
+    </ul>
+  </div>
+  <button (click)="backToMainPage()">Back to main page</button>
+</div>
