@@ -20,10 +20,10 @@
       </div>
       <div class="info-group">
         <h3>Current statistics</h3>
-        <p>Tickets in Pool: --</p>
-        <p>Total Tickets Produced: --</p>
-        <p>Total Tickets Consumed: --</p>
-        <p>Remaining Tickets: --</p>
+        <p>Tickets in Pool: {{currentTickets}}</p>
+        <p>Total Tickets Produced: {{ticketsProduced}}</p>
+        <p>Total Tickets Consumed: {{ticketsConsumed}}</p>
+        <p>Remaining Tickets: {{config.totalTicket - ticketsProduced}}</p>
       </div>
     </div>
 

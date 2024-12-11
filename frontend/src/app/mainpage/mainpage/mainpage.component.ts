@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { SystemConfig } from '../../models/system-config/system-config.module';
 import { DataSharingService } from '../../services/data-sharing.service';
 import { SimulationService } from '../../services/simulation.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-mainpage',
@@ -14,6 +15,11 @@ import { SimulationService } from '../../services/simulation.service';
 export class MainpageComponent {
   config!: SystemConfig;
   logs: string[] = [];
+  ticketsProduced = 0;
+  ticketsConsumed = 0;
+  currentTickets = 0;
+
+  private logStreamSubscription!: Subscription;
 
   constructor(
     private dataSharingService: DataSharingService,
@@ -29,8 +35,21 @@ export class MainpageComponent {
 
   startSimulation(): void {
     this.simulationService.startSimulation(this.config).subscribe(() => {
-      console.log('message');
-      this.fetchLogs();
+      console.log('message from start simulation');
+      /* this.fetchLogs(); */
+    });
+
+    this.logStreamSubscription = this.simulationService.getLogStream().subscribe((data) => {
+
+      if (data.type === 'log') {
+        console.log("data coming from log stream");
+        this.logs.push(data.message);
+        /* console.log(data.message); */
+      } else if (data.type === 'stats') {
+        this.ticketsProduced = data.ticketsProduced | 0;
+        this.ticketsConsumed = data.ticketsConsumed | 0;
+        this.currentTickets = data.currentTicketsInPool | 0;
+      }
     });
   }
 
@@ -43,6 +62,9 @@ export class MainpageComponent {
   }
 
   stopSimulation(): void {
+    if (this.logStreamSubscription) {
+      this.logStreamSubscription.unsubscribe();
+    }
     alert('Simulation stopped');
     this.router.navigate(['/']);
     this.simulationService.stopSimulation().subscribe(() => {

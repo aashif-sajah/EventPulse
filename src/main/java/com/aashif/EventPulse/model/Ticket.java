@@ -14,5 +14,13 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private Long simulationId;
+
+    public Ticket() {}
+
+    public Ticket(Long simulationId) {
+        this.simulationId = simulationId;
+    }
+
 
 }

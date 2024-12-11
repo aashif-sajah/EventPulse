@@ -20,11 +20,13 @@ public class LogEntry
     private int id;
     private String message;
     private LocalDateTime time;
+    private long simulationId;
 
 
-    public LogEntry(String message)
+    public LogEntry(String message, Long simulationId)
     {
         this.message = message;
+        this.simulationId = simulationId;
         this.time = LocalDateTime.now();
     }
 }

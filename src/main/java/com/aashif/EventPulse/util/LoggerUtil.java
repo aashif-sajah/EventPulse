@@ -7,29 +7,27 @@ import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 @Component
 @AllArgsConstructor
 
 public class LoggerUtil {
 
+    @Autowired
     private LogEntryRepo logEntryRepo;
 
     @Getter
-    private List<String> logs = new ArrayList<>();
+    private final BlockingQueue<String> logQueue = new LinkedBlockingQueue<>();
 
-    @Autowired
-    public LoggerUtil(LogEntryRepo logEntryRepo) {
-        this.logEntryRepo = logEntryRepo;
-    }
 
-    public void log(String message)
+    public void log(String message, long simulationId)
     {
-        logs.add(message);
-        logEntryRepo.save(new LogEntry(message));
-        System.out.println("Log: " + message);
+        logQueue.offer(message);
+        logEntryRepo.save(new LogEntry(message, simulationId));
+        /*System.out.println("Log: " + message);*/
 
     }
 
