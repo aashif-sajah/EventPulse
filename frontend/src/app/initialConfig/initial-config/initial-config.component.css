@@ -6,7 +6,11 @@ body {
   background-color: #f5f5f5;
   color: #333;
 }
-
+.imgD{
+  margin-top: 5px;
+  width: 150px;
+  height: auto
+}
 .container {
   display: flex;
   flex-direction: column; /* Stack header and content */
@@ -97,7 +101,7 @@ body {
 }
 
 .form-group input {
-  background-color: #333;
+  background-color: #cacaca;
   width: 100%;
   padding: 8px ;
   border: 1px solid #ccc;
@@ -127,15 +131,22 @@ body {
 
 
 .btn.start {
-  background-color: #4caf50;
+  background-color: #000000;
   color: white;
 }
 
 .btn.reset {
-  background-color: #f44336;
+  background-color: #000000;
   color: white;
 }
 
+.btn.reset:hover {
+  background-color: #242424;
+}
+
+.btn.start:hover {
+  background-color: #242424;
+}
 /* footer */
 
 .footer {
@@ -146,6 +157,6 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   padding: 13px 3px;
-  margin-top: 16px;
+  margin-top: 65px;
   overflow: hidden;
 }

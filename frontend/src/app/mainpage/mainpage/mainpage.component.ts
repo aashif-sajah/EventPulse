@@ -19,7 +19,7 @@ export class MainpageComponent {
   ticketsProduced = 0;
   ticketsConsumed = 0;
   currentTickets = 0;
-  startTime!: Date;
+  startTime!: Date | null;
 
   private logStreamSubscription!: Subscription;
 
@@ -68,13 +68,20 @@ export class MainpageComponent {
     if (this.logStreamSubscription) {
       this.logStreamSubscription.unsubscribe();
     }
-    alert('Simulation stopped');
     this.simulationService.stopSimulation().subscribe(() => {
       console.log('Simulation stopped');
     });
+
+    this.logs = [];
+    this.ticketsProduced = 0;
+    this.ticketsConsumed = 0;
+    this.currentTickets = 0;
+    this.startTime = null;
+
   }
 
   restartSimulation(): void {
+    this.stopSimulation();
     this.router.navigate(['/']);
   }
 

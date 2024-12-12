@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { SimulationService } from '../services/simulation.service';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { Router } from '@angular/router';
 
 
 @Component({
   selector: 'app-show-logs',
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [NgFor],
   templateUrl: './show-logs.component.html',
   styleUrls: ['./show-logs.component.css'],
 })
@@ -49,6 +49,7 @@ export class ShowLogsComponent {
 
   // Show the previous simulation's logs
   showPreviousSimulation(): void {
+
     if (this.currentIndex > 0) {
       this.currentIndex--;
       const prevId = this.simulationIds[this.currentIndex];
@@ -57,13 +58,13 @@ export class ShowLogsComponent {
   }
 
   backToMainPage(): void {
-    
+
       this.simulationIds = [];
       this.logs = [];
       this.selectedSimulationId = null;
       this.currentIndex = 0;
       this.router.navigate(['/mainpage']);
-
-    
   }
+
+ 
 }

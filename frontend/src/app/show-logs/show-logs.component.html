@@ -1,44 +1,57 @@
-<div class="simulation-logs">
-  <h2>Simulation Logs</h2>
-
-  <!-- Button to fetch all simulation IDs -->
-  <button (click)="fetchSimulationIds()">Show Simulation IDs</button>
-
-  <!-- Display simulation IDs -->
-  <div *ngIf="simulationIds.length > 0">
-    <h3>Select a Simulation</h3>
-    <ul>
-      <li
-        *ngFor="let id of simulationIds; let i = index"
-        (click)="fetchLogsForSimulation(id); currentIndex = i"
-        [class.selected]="id === selectedSimulationId"
-      >
-        Simulation ID: {{ id }}
-      </li>
-    </ul>
+<div class="data">
+<div class="container">
+  <div class="header">
+    <!-- <h1>EVENT PULSE</h1> -->
+    <img src="../EventPulse.png" alt="Event Pulse Logo" />
   </div>
+  <div class="content">
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <h1>Dashboard</h1>
+      <p>Monitor the simulation in real-time and manage its progress.</p>
+      <div class="info-group">
+        <h3>Simulation IDs</h3>
+        <div class="id-list">
+          @if(simulationIds.length > 0)
+          {
+          <ul>
+            <li
+              *ngFor="let id of simulationIds; let i = index"
+              (click)="fetchLogsForSimulation(id); currentIndex = i"
+              [class.selected]="id === selectedSimulationId"
+            >
+              Simulation ID: {{ id }} (Click)
+            </li>
+          </ul>
+          }
+        </div>
+        <button class="btn">View Simulation IDs</button>
+      </div>
+    </div>
 
-  <!-- Display navigation buttons -->
-  <div *ngIf="simulationIds.length > 1">
-    <button (click)="showPreviousSimulation()" [disabled]="currentIndex === 0">
-      Previous
-    </button>
-    <button
-      (click)="showNextSimulation()"
-      [disabled]="currentIndex === simulationIds.length - 1"
-    >
-      Next
-    </button>
-  </div>
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <div class="thisIsPlay">
+        <h3>Simulation Logs</h3>
+        <a href="/mainpage" class="back-to-home">← Back To Home</a>
+      </div>
 
-  <!-- Display logs for the selected simulation ID -->
-  <div *ngIf="logs.length > 0">
-    <h3>Logs for Simulation ID: {{ selectedSimulationId }}</h3>
-    <ul>
-      <li *ngFor="let log of logs">
-        {{ log.message }}
-      </li>
-    </ul>
+      <div class="log-area">
+        @if(simulationIds.length > 1)
+        {
+        <ul>
+          <li *ngFor="let log of logs">{{ log.message }}</li>
+        </ul>
+        }
+      </div>
+      <div class="log-buttons">
+        <button class="btn" (click)="showPreviousSimulation()" [disabled]="currentIndex === 0">Previous Log</button>
+        <button class="btn" (click)="showNextSimulation()" [disabled]="currentIndex === simulationIds.length - 1">Next Log</button>
+      </div>
+    </div>
   </div>
-  <button (click)="backToMainPage()">Back to main page</button>
+  <footer class="footer">
+    <p>© Aashif Sajah W2052938</p>
+  </footer>
+</div>
 </div>

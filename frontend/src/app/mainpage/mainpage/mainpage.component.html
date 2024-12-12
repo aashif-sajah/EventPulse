@@ -1,6 +1,8 @@
+<div class="data">
 <div class="container">
   <div class="header">
-    <h1>EVENT PULSE</h1>
+    <!-- <h1>EVENT PULSE</h1> -->
+    <img src="../../EventPulse.png" alt="Event Pulse Logo" />
   </div>
   <div class="content">
     <!-- Left Panel -->
@@ -19,6 +21,7 @@
             {{ config != null ? config.totalTicket : "Not Initialized yet" }}
           </p>
         </div>
+        <div class="extraAlignment">
         <div class="alignment">
           <p>Ticket Release Rate:</p>
           <p>
@@ -45,6 +48,7 @@
             }}
           </p>
         </div>
+      </div>
       </div>
       <div class="info-group">
         <h3>Current statistics</h3>
@@ -81,7 +85,7 @@
       <div class="btnRap">
         <button class="reset" (click)="restartSimulation()">Restart Simulation</button>
         <button class="reset" (click)="checkLogs()">Check Logs</button>
-      </div>  
+      </div>
     </div>
   </div>
   <footer class="footer">
@@ -89,4 +93,5 @@
     <p>Object Oriented Programming CW</p>
     <p>20222329/w2052938</p>
   </footer>
+</div>
 </div>

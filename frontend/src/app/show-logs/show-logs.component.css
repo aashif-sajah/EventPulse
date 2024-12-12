@@ -1,0 +1,117 @@
+.data {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  background-color: #e8f2f4;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header  {
+  background-color: #282f57;
+  color: #fff;
+  padding: 12px 20px;
+  text-align: center;
+}
+
+img{
+  margin-top: 5px;
+  width: 150px;
+  height: auto
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  padding: 20px 50px 20px 50px;
+  gap: 20px;
+
+}
+
+.left-panel, .right-panel {
+  flex: 1;
+  background-color: #e8f2f4;
+  padding: 20px ;
+  border-radius: 8px;
+}
+
+.left-panel h1, .right-panel h3 {
+  margin-top: 0;
+}
+
+.right-panel{
+  margin-top: 73px;
+  padding-left: 100px;
+}
+
+.left-panel{
+  padding-right: 100px;
+}
+
+.info-group {
+  margin-bottom: 20px;
+}
+
+.id-list, .log-area {
+  margin-top: 10px;
+  padding: 10px;
+  background-color:#fff ;
+  border-radius: 5px;
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #000;
+}
+
+.id-list p, .log-area p {
+  margin: 5px 0;
+}
+
+.btn {
+  margin-top: 10px;
+  background-color: #000000;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #242424;
+}
+
+.log-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #2e3b58;
+  color: #fff;
+}
+
+.back-to-home {
+  display: inline-block;
+  margin-bottom: 5px;
+  color: #000000;
+  text-decoration: none;
+  position: relative;
+  top: -60px;
+}
+
+.back-to-home:hover {
+  text-decoration: underline;
+}
+
+.thisIsPlay{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
