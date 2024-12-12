@@ -66,5 +66,5 @@ export class ShowLogsComponent {
       this.router.navigate(['/mainpage']);
   }
 
- 
+
 }

@@ -12,8 +12,6 @@
       <div class="info-group">
         <h3>Simulation IDs</h3>
         <div class="id-list">
-          @if(simulationIds.length > 0)
-          {
           <ul>
             <li
               *ngFor="let id of simulationIds; let i = index"
@@ -23,9 +21,8 @@
               Simulation ID: {{ id }} (Click)
             </li>
           </ul>
-          }
         </div>
-        <button class="btn">View Simulation IDs</button>
+        <button class="btn" (click)="fetchSimulationIds()">View Simulation IDs</button>
       </div>
     </div>
 
@@ -37,16 +34,13 @@
       </div>
 
       <div class="log-area">
-        @if(simulationIds.length > 1)
-        {
         <ul>
           <li *ngFor="let log of logs">{{ log.message }}</li>
         </ul>
-        }
       </div>
       <div class="log-buttons">
-        <button class="btn" (click)="showPreviousSimulation()" [disabled]="currentIndex === 0">Previous Log</button>
-        <button class="btn" (click)="showNextSimulation()" [disabled]="currentIndex === simulationIds.length - 1">Next Log</button>
+        <button class="btn" (click)="showPreviousSimulation()" >Previous Log</button>
+        <button class="btn" (click)="showNextSimulation()">Next Log</button>
       </div>
     </div>
   </div>
